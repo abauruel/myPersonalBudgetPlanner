@@ -6,6 +6,7 @@ type IOptions = {
 
 getConnectionOptions().then(options => {
 	const newOptions = options as IOptions
-	newOptions.host = 'db'
+	newOptions.host = 'localhost'
 	createConnection({ ...options })
 })
+
