@@ -1,5 +1,6 @@
-import { Column, Entity, PrimaryColumn } from 'typeorm'
+import { Column, Entity, ManyToOne, OneToMany, PrimaryColumn } from 'typeorm'
 import { v4 as uuidv4 } from 'uuid'
+import { SubCategory } from './SubCategory'
 
 @Entity("categories")
 class Category {
@@ -9,6 +10,9 @@ class Category {
 
   @Column()
   name: string
+
+  @OneToMany(() => SubCategory, subcategories => subcategories.category)
+  subcategories: SubCategory[]
 
   constructor() {
     if (!this.id) {
