@@ -18,7 +18,7 @@ export class CreateSubCategory1641743305143 implements MigrationInterface {
             },
             {
                 name: "idcategory",
-                type: "varchar",
+                type: "integer",
             }
             ]
         }))

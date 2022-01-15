@@ -8,9 +8,10 @@ export class CreateCategory1641130434710 implements MigrationInterface {
             columns: [
                 {
                     name: "id",
-                    type: "varchar",
+                    type: "integer",
                     isPrimary: true,
-                    isUnique: true
+                    isUnique: true,
+                    isGenerated: true
                 },
                 {
                     name: "name",

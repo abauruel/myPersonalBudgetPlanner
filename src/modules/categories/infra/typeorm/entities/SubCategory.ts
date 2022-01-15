@@ -12,7 +12,7 @@ class SubCategory {
   name: string
 
   @Column()
-  idcategory: string
+  idcategory: number
 
   @ManyToOne(() => Category, category => category.subcategories)
   category: Category

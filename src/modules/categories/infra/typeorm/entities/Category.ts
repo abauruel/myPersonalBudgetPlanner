@@ -6,7 +6,7 @@ import { SubCategory } from './SubCategory'
 class Category {
 
   @PrimaryColumn()
-  id: string
+  id: number
 
   @Column()
   name: string
@@ -14,11 +14,6 @@ class Category {
   @OneToMany(() => SubCategory, subcategories => subcategories.category)
   subcategories: SubCategory[]
 
-  constructor() {
-    if (!this.id) {
-      this.id = uuidv4()
-    }
-  }
 }
 
 export { Category }
