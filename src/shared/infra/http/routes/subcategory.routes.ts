@@ -1,5 +1,5 @@
-import { CreateSubCategoryController } from '@modules/categories/useCases/SubCategory/CreateSubCategoryController'
-import { ListSubCategoriesController } from '@modules/categories/useCases/SubCategory/ListSubCategoriesController'
+import { CreateSubCategoryController } from '@modules/expenditure/useCases/SubCategory/CreateSubCategoryController'
+import { ListSubCategoriesController } from '@modules/expenditure/useCases/SubCategory/ListSubCategoriesController'
 import { Router } from 'express'
 
 const subCategoryRoutes = Router()

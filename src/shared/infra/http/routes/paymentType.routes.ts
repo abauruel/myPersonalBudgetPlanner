@@ -1,5 +1,5 @@
-import { CreatePaymentTypeController } from '@modules/categories/useCases/PaymentTypes/CreatePaymentTypesController'
-import { ListPaymentTypesController } from '@modules/categories/useCases/PaymentTypes/ListPaymentTypesController'
+import { CreatePaymentTypeController } from '@modules/expenditure/useCases/PaymentTypes/CreatePaymentTypesController'
+import { ListPaymentTypesController } from '@modules/expenditure/useCases/PaymentTypes/ListPaymentTypesController'
 import { Router } from 'express'
 
 const paymentTypeRoutes = Router()

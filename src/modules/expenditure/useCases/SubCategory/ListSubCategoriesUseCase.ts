@@ -1,4 +1,4 @@
-import { ISubCategoriesRepository } from "@modules/categories/repositories/ISubCategoriesRepository";
+import { ISubCategoriesRepository } from "@modules/expenditure/repositories/ISubCategoriesRepository";
 import { inject, injectable } from "tsyringe";
 
 @injectable()

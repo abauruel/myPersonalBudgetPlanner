@@ -1,5 +1,5 @@
-import { PaymentsType } from "@modules/categories/infra/typeorm/entities/PaymentType";
-import { IPaymentTypeRepository } from "@modules/categories/repositories/IPaymentTypeRepository";
+import { PaymentsType } from "@modules/expenditure/infra/typeorm/entities/PaymentType";
+import { IPaymentTypeRepository } from "@modules/expenditure/repositories/IPaymentTypeRepository";
 import { AppError } from "@shared/errors/AppError";
 import { inject, injectable } from "tsyringe";
 

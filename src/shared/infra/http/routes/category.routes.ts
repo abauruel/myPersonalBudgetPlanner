@@ -1,5 +1,5 @@
-import { CreateCategoryController } from '@modules/categories/useCases/Category/CreateCategoryController'
-import { ListCategoryController } from '@modules/categories/useCases/Category/ListaCategoriesController'
+import { CreateCategoryController } from '@modules/expenditure/useCases/Category/CreateCategoryController'
+import { ListCategoryController } from '@modules/expenditure/useCases/Category/ListaCategoriesController'
 import { Router } from 'express'
 
 const categoryRoutes = Router()

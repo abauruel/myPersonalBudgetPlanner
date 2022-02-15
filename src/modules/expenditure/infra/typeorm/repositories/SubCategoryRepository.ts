@@ -1,5 +1,5 @@
 import { getRepository, Repository } from 'typeorm'
-import { ISubCategoriesRepository } from '@modules/categories/repositories/ISubCategoriesRepository';
+import { ISubCategoriesRepository } from '@modules/expenditure/repositories/ISubCategoriesRepository';
 import { SubCategory } from '../entities/SubCategory';
 
 type CreateSubCategoryProps = {

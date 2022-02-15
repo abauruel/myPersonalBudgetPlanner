@@ -2,7 +2,7 @@ import 'reflect-metadata'
 import { AppError } from "@shared/errors/AppError";
 import { inject, injectable } from "tsyringe";
 import { ISubCategoriesRepository } from "../../repositories/ISubCategoriesRepository";
-import { SubCategory } from '@modules/categories/infra/typeorm/entities/SubCategory';
+import { SubCategory } from '@modules/expenditure/infra/typeorm/entities/SubCategory';
 
 
 type SubCategoryType = {

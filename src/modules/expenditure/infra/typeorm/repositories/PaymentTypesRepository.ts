@@ -1,4 +1,4 @@
-import { IPaymentTypeRepository } from "@modules/categories/repositories/IPaymentTypeRepository";
+import { IPaymentTypeRepository } from "@modules/expenditure/repositories/IPaymentTypeRepository";
 import { getRepository, Repository } from "typeorm";
 import { PaymentsType } from "../entities/PaymentType";
 
