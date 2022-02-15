@@ -8,6 +8,13 @@ class PaymentTypesRepository implements IPaymentTypeRepository {
   constructor() {
     this.repository = getRepository(PaymentsType)
   }
+  async findByName(name: string): Promise<PaymentsType[]> {
+    return await this.repository.find({
+      where: {
+        name
+      }
+    })
+  }
 
   async findById(id: number): Promise<PaymentsType> {
     const paymentType = await this.repository.findOne({

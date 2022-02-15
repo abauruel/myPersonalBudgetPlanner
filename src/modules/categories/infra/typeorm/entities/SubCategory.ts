@@ -18,7 +18,7 @@ class SubCategory {
   category: Category
 
   @ManyToOne(() => Income, incomes => incomes.subcategory)
-  income: Income
+  income?: Income
 }
 
 export { SubCategory }
