@@ -9,9 +9,12 @@ import { IUsersRepositories } from '@modules/accounts/repositories/IUsersReposio
 import { UsersRepository } from '@modules/accounts/infra/typeorm/repositories/UsersRepository'
 import { IGroupsRepositories } from '@modules/accounts/repositories/IGroupsRepositories'
 import { GroupsRepository } from '@modules/accounts/infra/typeorm/repositories/GroupsRepository'
+import { IExpensesRepository } from '@modules/expenditure/repositories/IExpensesRepository'
+import { ExpensesRepository } from '@modules/expenditure/infra/typeorm/repositories/ExpensesRepository'
 
 container.registerSingleton<ICategoriesRepository>("CategoriesRepository", CategoriesRepository)
 container.registerSingleton<ISubCategoriesRepository>("SubCategoriesRepository", SubCategoryRepository)
 container.registerSingleton<IPaymentTypeRepository>("PaymentsTypeRepository", PaymentTypesRepository)
 container.registerSingleton<IGroupsRepositories>("GroupsRepository", GroupsRepository)
 container.registerSingleton<IUsersRepositories>("UsersRepository", UsersRepository)
+container.registerSingleton<IExpensesRepository>("ExpensesRepository", ExpensesRepository)
