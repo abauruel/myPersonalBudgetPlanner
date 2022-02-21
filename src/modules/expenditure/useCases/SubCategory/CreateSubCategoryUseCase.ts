@@ -7,20 +7,20 @@ import { SubCategory } from '@modules/expenditure/infra/typeorm/entities/SubCate
 
 type SubCategoryType = {
   name: string,
-  idCategory: number
+  idcategory: number
 }
 
 @injectable()
 class CreateSubCategoryUseCase {
   constructor(
-    @inject("CategoriesRepository")
+    @inject("SubCategoriesRepository")
     private subCategoriesRepository: ISubCategoriesRepository
   ) { }
-  async execute({ idCategory, name }: SubCategoryType): Promise<void> {
+  async execute({ idcategory, name }: SubCategoryType): Promise<SubCategory> {
 
     const subcategory = await this.subCategoriesRepository.findByName(name)
-
-    if (subcategory) {
+    console.log(subcategory)
+    if (subcategory.length > 0) {
       throw new AppError("name already exists!")
     }
 
@@ -28,7 +28,7 @@ class CreateSubCategoryUseCase {
       throw new AppError("name is required!")
     }
 
-    await this.subCategoriesRepository.create({ idCategory, name })
+    return this.subCategoriesRepository.create({ idcategory, name })
   }
 
 }

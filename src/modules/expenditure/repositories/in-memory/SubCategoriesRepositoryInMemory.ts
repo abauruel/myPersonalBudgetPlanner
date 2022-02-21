@@ -1,7 +1,12 @@
-import { SubCategory } from "@modules/categories/infra/typeorm/entities/SubCategory";
-import { ISubCategoriesRepository } from "../ISubCategoriesRepository";
+import { SubCategory } from "@modules/expenditure/infra/typeorm/entities/SubCategory";
+import { ISubCategoriesRepository, CreateSubCategoryInput } from "../ISubCategoriesRepository";
+
+
 
 class SubCategoriesRepositoryInMemory implements ISubCategoriesRepository {
+  findByName(name: string): Promise<SubCategory[]> {
+    throw new Error("Method not implemented.");
+  }
   private subCategories: SubCategory[] = []
 
   async findSubCategoriesByCategory(idCategory: number): Promise<SubCategory[]> {
@@ -10,9 +15,12 @@ class SubCategoriesRepositoryInMemory implements ISubCategoriesRepository {
   }
 
 
-  async create(subCategory: SubCategory): Promise<void> {
-    this.subCategories.push(subCategory)
-
+  async create(subCategory: CreateSubCategoryInput): Promise<SubCategory> {
+    const subcategory: SubCategory = {
+      ...subCategory
+    }
+    this.subCategories.push(subcategory)
+    return subcategory
   }
 
 

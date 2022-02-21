@@ -3,16 +3,17 @@ import { ISubCategoriesRepository } from '@modules/expenditure/repositories/ISub
 import { SubCategory } from '../entities/SubCategory';
 
 type CreateSubCategoryProps = {
-  idCategory: number
+  idcategory: number
   name: string
 }
 
 class SubCategoryRepository implements ISubCategoriesRepository {
-  private repository: Repository<SubCategory>
+  private readonly repository: Repository<SubCategory>
 
   constructor() {
     this.repository = getRepository(SubCategory)
   }
+
   async findByName(name: string): Promise<SubCategory[]> {
     const subCategory = await this.repository.find({
       where: {
@@ -26,15 +27,15 @@ class SubCategoryRepository implements ISubCategoriesRepository {
   async findSubCategoriesByCategory(idCategory: number): Promise<SubCategory[]> {
     const subcategories = await this.repository.find({
       where: {
-        idcategory: idCategory
+        id: idCategory
       }
     })
     return subcategories
   }
 
-  async create({ idCategory, name }: CreateSubCategoryProps): Promise<void> {
-    const subcategory = this.repository.create({ idcategory: idCategory, name })
-    await this.repository.save(subcategory)
+  async create({ idcategory, name }: CreateSubCategoryProps): Promise<SubCategory> {
+    const subcategory = this.repository.create({ idcategory, name })
+    return this.repository.save(subcategory)
 
   }
 

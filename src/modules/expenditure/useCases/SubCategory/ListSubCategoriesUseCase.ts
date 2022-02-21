@@ -8,7 +8,10 @@ class ListSubCategoriesUseCase {
     private subCategoriesRepository: ISubCategoriesRepository
   ) { }
   async execute(idCategory: number) {
-    return this.subCategoriesRepository.findSubCategoriesByCategory(idCategory)
+    const subCategories = await this.subCategoriesRepository.findSubCategoriesByCategory(idCategory)
+
+    console.log("==>", subCategories)
+    return subCategories
   }
 }
 

@@ -1,14 +1,14 @@
 import { SubCategory } from "../infra/typeorm/entities/SubCategory";
 
-type CreateSubCategoryInput = {
+export type CreateSubCategoryInput = {
   name: string
-  idCategory: number
+  idcategory: number
 }
 
 interface ISubCategoriesRepository {
   findByName(name: string): Promise<SubCategory[]>
   findSubCategoriesByCategory(idCategory: number): Promise<SubCategory[]>
-  create(subCategory: CreateSubCategoryInput): Promise<void>
+  create(subCategory: CreateSubCategoryInput): Promise<SubCategory>
 }
 
 export { ISubCategoriesRepository }
