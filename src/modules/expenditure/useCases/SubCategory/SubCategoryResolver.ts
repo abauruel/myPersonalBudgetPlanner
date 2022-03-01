@@ -7,6 +7,7 @@ import { CreateSubCategoryUseCase } from "./CreateSubCategoryUseCase"
 import { Context } from "apollo-server-core"
 import { GetCategoryById } from "../Category/GetCategoryById"
 import { Category } from "@modules/expenditure/infra/typeorm/entities/Category"
+import { CategoryLoader } from "../Category/CategoryLoader"
 
 @Resolver((of) => SubCategory)
 class SubCategoryResolver {
@@ -28,7 +29,7 @@ class SubCategoryResolver {
 
   @FieldResolver(() => Category)
   async category(@Root() subcategory: SubCategory) {
-    return await this.getCategoryByIdUseCase.execute(subcategory.idcategory)
+    return await CategoryLoader.load(subcategory.idcategory)
   }
 
 }

@@ -1,4 +1,4 @@
-import { getRepository, Repository } from 'typeorm'
+import { getRepository, In, Repository } from 'typeorm'
 import { ICategoriesRepository } from "@modules/expenditure/repositories/ICategoriesRepository";
 import { Category } from "@modules/expenditure/infra/typeorm/entities/Category";
 
@@ -7,6 +7,14 @@ class CategoriesRepository implements ICategoriesRepository {
 
   constructor() {
     this.repository = getRepository(Category)
+  }
+
+  async findByIds(ids: number[]): Promise<Category[]> {
+    return this.repository.find({
+      where: {
+        id: In(ids)
+      }
+    })
   }
   async findById(id: number): Promise<Category> {
     return this.repository.findOne({

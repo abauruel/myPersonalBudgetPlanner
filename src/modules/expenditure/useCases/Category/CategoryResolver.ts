@@ -25,13 +25,12 @@ class CategoryResolver {
     return listCategoriesUseCase.execute()
   }
 
-  // @FieldResolver(() => [SubCategory])
-  // async subcategories(@Root() category: Category) {
-  //   const listsubcategoriesByCategory = container.resolve(ListSubCategoriesUseCase)
-  //   const subcategories = await listsubcategoriesByCategory.execute(category.id)
-  //   console.log(subcategories)
-  //   return subcategories
-  // }
+  @FieldResolver(() => [SubCategory])
+  async subcategories(@Root() category: Category) {
+    const listsubcategoriesByCategory = container.resolve(ListSubCategoriesUseCase)
+    const subcategories = await listsubcategoriesByCategory.execute(category.id)
+    return subcategories
+  }
 
 
   @Mutation(() => Category)
