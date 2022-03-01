@@ -1,4 +1,4 @@
-import { Column, CreateDateColumn, Entity, ManyToOne, PrimaryColumn, UpdateDateColumn } from "typeorm";
+import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, PrimaryColumn, UpdateDateColumn } from "typeorm";
 import { Group } from "./Group";
 import { v4 as uuidV4 } from 'uuid'
 import { Field, ID, ObjectType } from "type-graphql";
@@ -13,7 +13,7 @@ class User {
     }
   }
 
-  @Field(() => ID)
+  @Field(() => ID!)
   @PrimaryColumn()
   id: string
 
@@ -41,7 +41,11 @@ class User {
 
   @Field(() => Group)
   @ManyToOne(() => Group, group => group.users)
+  @JoinColumn({ name: "idgroup" })
   group: Group
+
+  @Column()
+  avatar?: string
 }
 
 export { User }

@@ -25,9 +25,9 @@ class GroupsRepository implements IGroupsRepositories {
 
     return group
   }
-  async create(Group: Group): Promise<void> {
+  async create(Group: Group): Promise<Group> {
     const group = this.repository.create(Group)
-    this.repository.save(group)
+    return this.repository.save(group)
   }
 }
 

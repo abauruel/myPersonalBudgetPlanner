@@ -30,6 +30,13 @@ class UsersRepository implements IUsersRepositories {
     await this.repository.save(user)
   }
 
+  async update(User: User): Promise<User> {
+    const user = await this.repository.update(User.id, {
+      avatar: User.avatar
+    })
+    return User
+  }
+
 }
 
 export { UsersRepository }

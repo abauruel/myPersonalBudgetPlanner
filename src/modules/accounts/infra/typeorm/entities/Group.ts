@@ -9,7 +9,7 @@ import { User } from "./User"
 class Group {
   @Field(() => ID)
   @PrimaryColumn()
-  id: string
+  id?: string
 
   @Field()
   @Column()
@@ -17,18 +17,18 @@ class Group {
 
 
   @CreateDateColumn()
-  created_at: Date
+  created_at?: Date
 
   @UpdateDateColumn()
-  updated_at: Date
+  updated_at?: Date
 
   @Field(() => [User])
   @OneToMany(() => User, users => users.group)
-  users: User[]
+  users?: User[]
 
   @Field(() => [Income])
   @OneToMany(() => Income, incomes => incomes.group)
-  incomes: Income[]
+  incomes?: Income[]
 
 
   constructor() {

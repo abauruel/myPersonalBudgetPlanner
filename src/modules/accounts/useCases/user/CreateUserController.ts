@@ -7,7 +7,7 @@ class CreateUserController {
 
     const createUserUseCase = container.resolve(CreateUserUseCase)
     await createUserUseCase.execute({ name, email, password, idgroup })
-    return response.status(204)
+    return response.status(204).send()
   }
 }
 

@@ -3,5 +3,6 @@ export type UserDto = {
   name: string,
   password: string,
   email: string,
-  idgroup: string
+  idgroup: string,
+  avatar?: string
 }
