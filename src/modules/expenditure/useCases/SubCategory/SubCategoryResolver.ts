@@ -26,7 +26,7 @@ class SubCategoryResolver {
     return createSubCategoryUseCase.execute({ name, idcategory })
   }
 
-  @FieldResolver()
+  @FieldResolver(() => Category)
   async category(@Root() subcategory: SubCategory) {
     return await this.getCategoryByIdUseCase.execute(subcategory.idcategory)
   }

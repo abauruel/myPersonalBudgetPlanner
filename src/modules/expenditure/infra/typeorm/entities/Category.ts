@@ -1,5 +1,5 @@
 import { Field, ID, Int, ObjectType } from 'type-graphql'
-import { Column, Entity, ManyToOne, OneToMany, PrimaryColumn, PrimaryGeneratedColumn } from 'typeorm'
+import { Column, Entity, JoinColumn, JoinTable, ManyToOne, OneToMany, PrimaryColumn, PrimaryGeneratedColumn } from 'typeorm'
 import { v4 as uuidv4 } from 'uuid'
 import { SubCategory } from './SubCategory'
 
@@ -8,16 +8,16 @@ import { SubCategory } from './SubCategory'
 class Category {
 
   @PrimaryGeneratedColumn()
-  @Field(() => Int)
+  @Field(() => ID!)
   id: number
 
   @Field()
   @Column()
   name: string
 
-  // @OneToMany(() => SubCategory, subcategory => subcategory.category)
+  @OneToMany(() => SubCategory, subcategory => subcategory.category)
   @Field((type) => [SubCategory], { nullable: true })
-  subcategories?: SubCategory[]
+  subcategories?: Promise<SubCategory[]>
 
 }
 
