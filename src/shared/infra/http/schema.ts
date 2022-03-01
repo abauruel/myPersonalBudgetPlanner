@@ -6,13 +6,29 @@ const typeDefs = gql`
     getSubCategoriesByCategoryId(idCategory: ID!): [SubCategory]
   }
 
+  type Mutation {
+    createCategory2(name: String!): CategoryPayload
+  }
+
   type Category {
-    name: String
+    id: ID!
+    name: String!
+    subcategories: [SubCategory]
   }
 
   type SubCategory {
-    name: String
-    idcategory: Int
+    name: String!
+    category: Category!
+  }
+
+
+  type UserError {
+    message: String!
+  }
+
+  type CategoryPayload {
+    userErrors: [UserError!]!
+    category: Category
   }
 `
 export { typeDefs }
