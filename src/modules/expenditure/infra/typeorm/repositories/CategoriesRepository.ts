@@ -1,42 +1,39 @@
-import { getRepository, In, Repository } from 'typeorm'
+import { getRepository, In, Repository } from "typeorm";
 import { ICategoriesRepository } from "@modules/expenditure/repositories/ICategoriesRepository";
 import { Category } from "@modules/expenditure/infra/typeorm/entities/Category";
 
 class CategoriesRepository implements ICategoriesRepository {
-  private repository: Repository<Category>
+  private repository: Repository<Category>;
 
   constructor() {
-    this.repository = getRepository(Category)
+    this.repository = getRepository(Category);
   }
 
   async findByIds(ids: number[]): Promise<Category[]> {
     return this.repository.find({
       where: {
-        id: In(ids)
-      }
-    })
+        id: In(ids),
+      },
+    });
   }
   async findById(id: number): Promise<Category> {
     return this.repository.findOne({
       where: {
-        id
-      }
-    })
+        id,
+      },
+    });
   }
 
   async findAll(): Promise<Category[]> {
-    return this.repository.find()
+    return this.repository.find();
   }
 
   async create(name: string): Promise<Category> {
-
     const category = this.repository.create({
-      name
-    })
-    return await this.repository.save(category)
-
+      name,
+    });
+    return await this.repository.save(category);
   }
 }
 
-
-export { CategoriesRepository }
+export { CategoriesRepository };

@@ -1,7 +1,7 @@
 import 'reflect-metadata'
 import 'express-async-errors'
 import dotenv from 'dotenv'
-import express, { Request, Response } from 'express'
+import express, { Request, Response, NextFunction } from 'express'
 
 import { routes } from '@shared/infra/http/routes'
 
@@ -23,16 +23,18 @@ app.use("/files", express.static(path.resolve(__dirname, "..", "tmp", "uploads")
 app.use(routes)
 
 
-app.use((error: Error, request: Request, response: Response) => {
+app.use((error: Error, request: Request, response: Response, next: NextFunction) => {
   if (error instanceof AppError) {
     return response.status(error.statusCode).json({
       message: error.message
     })
   }
+
   return response.status(500).json({
     status: "error",
     message: `internal server error - ${error.message}`
   })
+  next()
 
 })
 

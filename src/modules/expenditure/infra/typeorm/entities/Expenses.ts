@@ -1,53 +1,65 @@
-import { Group } from "@modules/accounts/infra/typeorm/entities/Group"
-import { Field, ObjectType } from "type-graphql"
-import { Column, CreateDateColumn, OneToMany, PrimaryColumn, UpdateDateColumn } from "typeorm"
-import { PaymentsType } from "./PaymentType"
-import { SubCategory } from "./SubCategory"
+import { Group } from "@modules/accounts/infra/typeorm/entities/Group";
+import { Field, ObjectType } from "type-graphql";
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  JoinColumn,
+  JoinTable,
+  ManyToOne,
+  OneToMany,
+  PrimaryColumn,
+  UpdateDateColumn,
+} from "typeorm";
+import { PaymentsType } from "./PaymentType";
+import { SubCategory } from "./SubCategory";
 
 @ObjectType()
+@Entity("expenses")
 class Expenses {
-
   @Field()
   @PrimaryColumn()
-  id: string
+  id: string;
 
   @Field()
   @Column()
-  name: string
+  name: string;
 
   @Field()
   @Column()
-  date: Date
+  date: Date;
 
   @CreateDateColumn()
-  created_at: Date
+  created_at: Date;
 
   @UpdateDateColumn()
-  updated_at: Date
+  updated_at: Date;
 
   @Field()
   @Column()
-  idgroup: number
+  idgroup: string;
 
-  @OneToMany(() => Group, groups => groups.id)
-  group: Group
-
-  @Field()
-  @Column()
-  idpaymentType: number
-
-  @OneToMany(() => PaymentsType, paymentTypes => paymentTypes.id)
-  paymentType: PaymentsType
+  @OneToMany(() => Group, (groups) => groups.id)
+  group: Group;
 
   @Field()
   @Column()
-  idsubcategory: number
+  idpaymentType: number;
 
-  @OneToMany(() => SubCategory, subcategories => subcategories.id)
-  subcategory: SubCategory
+  @OneToMany(() => PaymentsType, (paymentTypes) => paymentTypes.id)
+  paymentType: PaymentsType;
 
+  @Field()
+  @Column()
+  idsubcategory: number;
+
+  @ManyToOne(() => SubCategory, (subcategory) => subcategory.expenses)
+  @JoinColumn({ name: "idsubcategory" })
+  subcategory: SubCategory;
+
+  @Field()
+  @Column()
+  amount: number;
 }
 
-export {
-  Expenses
-}
+export { Expenses };

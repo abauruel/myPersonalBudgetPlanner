@@ -30,7 +30,7 @@ class PaymentTypesRepository implements IPaymentTypeRepository {
 
   async create(name: string): Promise<void> {
     const paymentType = this.repository.create({ name })
-    await this.repository.save(paymentType)
+    const paymentTypeSaved = await this.repository.save(paymentType)
   }
 
   async update(paymentType: PaymentsType): Promise<void> {

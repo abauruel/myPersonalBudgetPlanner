@@ -6,7 +6,7 @@ class CreateGroupController {
     const { name } = request.body
     const createGroupUseCase = container.resolve(CreateGroupUseCase)
     await createGroupUseCase.execute(name)
-    return response.status(204)
+    return response.status(204).send()
   }
 }
 

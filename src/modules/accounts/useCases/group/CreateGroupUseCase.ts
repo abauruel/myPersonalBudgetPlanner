@@ -5,10 +5,8 @@ import { inject, injectable } from "tsyringe";
 
 @injectable()
 class CreateGroupUseCase {
-
-
   constructor(
-    @inject('Group')
+    @inject('GroupsRepository')
     private groupsRepository: IGroupsRepositories
   ) { }
 

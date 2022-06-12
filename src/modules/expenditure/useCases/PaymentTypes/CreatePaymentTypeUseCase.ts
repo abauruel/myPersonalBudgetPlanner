@@ -12,9 +12,10 @@ class CreatePaymentTypeUseCase {
 
 
   async execute(name: string) {
+
     const paymentType = await this.paymentTypesRepository.findByName(name)
 
-    if (paymentType) {
+    if (paymentType.length > 0) {
       throw new AppError("name already exists")
     }
 

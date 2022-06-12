@@ -1,7 +1,8 @@
 import { PaymentsType } from "@modules/expenditure/infra/typeorm/entities/PaymentType";
 import { IPaymentTypeRepository } from "@modules/expenditure/repositories/IPaymentTypeRepository";
-import { inject } from "tsyringe";
+import { inject, injectable } from "tsyringe";
 
+@injectable()
 class ListPaymentTypesUseCase {
   constructor(
     @inject("PaymentsTypeRepository")

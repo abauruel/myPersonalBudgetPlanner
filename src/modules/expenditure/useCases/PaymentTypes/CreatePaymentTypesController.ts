@@ -5,7 +5,9 @@ import { CreatePaymentTypeUseCase } from './CreatePaymentTypeUseCase'
 class CreatePaymentTypeController {
   async handle(request: Request, response: Response) {
     const createPaymentTypesUseCase = container.resolve(CreatePaymentTypeUseCase)
-    return response.json(createPaymentTypesUseCase)
+    const { name } = request.body
+    await createPaymentTypesUseCase.execute(name)
+    return response.status(204).send()
   }
 }
 

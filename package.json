@@ -31,8 +31,9 @@
     "sqlite3": "^5.0.2",
     "tsyringe": "^4.6.0",
     "type-graphql": "^1.1.1",
-    "typeorm": "^0.2.41",
-    "uuid": "^8.3.2"
+    "typeorm": "0.3.6",
+    "uuid": "^8.3.2",
+    "yup": "^0.32.11"
   },
   "devDependencies": {
     "@babel/preset-typescript": "^7.16.7",

@@ -3,12 +3,12 @@ import { container } from 'tsyringe'
 import { CreateSubCategoryUseCase } from './CreateSubCategoryUseCase'
 class CreateSubCategoryController {
   async handle(request: Request, response: Response): Promise<Response> {
-    const { name, idCategory } = request.body
+    const { name, idcategory } = request.body
     const createSubCategoryUseCase = container.resolve(CreateSubCategoryUseCase)
 
-    await createSubCategoryUseCase.execute({ name, idCategory })
+    const subCategory = await createSubCategoryUseCase.execute({ name, idcategory })
 
-    return response.status(204).send()
+    return response.json(subCategory)
   }
 }
 

@@ -8,7 +8,7 @@ class ListSubCategoriesController {
 
     const listSubcategoriesUseCase = container.resolve(ListSubCategoriesUseCase)
 
-    const subcategories = await listSubcategoriesUseCase.execute(idCategory)
+    const subcategories = await listSubcategoriesUseCase.execute(Number(idCategory))
 
     return response.json(subcategories)
 
